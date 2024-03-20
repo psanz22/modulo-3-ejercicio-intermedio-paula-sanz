@@ -1,5 +1,6 @@
 import Country from './Country';
 import '../scss/components/ListCountries.scss';
+import PropTypes from 'prop-types';
 
 function ListCountries({ countriesData }) {
   return (
@@ -9,6 +10,9 @@ function ListCountries({ countriesData }) {
       })}
     </div>
   );
+  ListCountries.propTypes = {
+    countriesData: PropTypes.array,
+  };
 }
 
 export default ListCountries;

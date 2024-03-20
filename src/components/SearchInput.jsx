@@ -1,4 +1,5 @@
 import '../scss/components/SearchInput.scss';
+import PropTypes from 'prop-types';
 
 function SearchInput({ searchCountries }) {
   const handleSearch = (event) => {
@@ -15,6 +16,9 @@ function SearchInput({ searchCountries }) {
       />
     </>
   );
+  SearchInput.propTypes = {
+    searchCountries: PropTypes.string,
+  };
 }
 
 export default SearchInput;

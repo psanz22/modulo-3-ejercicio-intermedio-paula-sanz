@@ -1,4 +1,5 @@
 import '../scss/components/Country.scss';
+import PropTypes from 'prop-types';
 
 function Country({ countryData }) {
   return (
@@ -10,5 +11,7 @@ function Country({ countryData }) {
     </div>
   );
 }
-
+Country.propTypes = {
+  countryData: PropTypes.object,
+};
 export default Country;

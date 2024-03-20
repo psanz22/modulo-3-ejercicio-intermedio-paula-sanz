@@ -1,5 +1,6 @@
 import Header from './Header';
 import SearchInput from './SearchInput';
+import AddCountry from './AddCountry';
 import ListCountries from './ListCountries';
 import '../scss/App.scss';
 import { useState } from 'react';
@@ -4403,9 +4404,17 @@ const countriesInfo = [
 
 function App() {
   const [searchCountry, setSearchCountry] = useState('');
+  const [addNameCountry, setAddNameCountry] = useState('');
+  const [addCapitalCountry, setAddCapitalCountry] = useState('');
+  const [addContinentCountry, setAddContinentCountry] = useState('');
 
   const searchCountries = (value) => {
     setSearchCountry(value);
+  };
+  const addCountry = (value) => {
+    setAddNameCountry(value);
+    setAddCapitalCountry(value);
+    setAddContinentCountry(value);
   };
 
   const filteredCountries = countriesInfo.filter((country) => {
@@ -4418,6 +4427,7 @@ function App() {
     <main className='main'>
       <Header />
       <SearchInput searchCountries={searchCountries} />
+      <AddCountry addCountry={addCountry} />
       <ListCountries countriesData={filteredCountries} />
     </main>
   );
