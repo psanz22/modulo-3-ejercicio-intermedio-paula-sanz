@@ -4404,6 +4404,8 @@ const countriesInfo = [
 
 function App() {
   const [searchCountry, setSearchCountry] = useState('');
+  const [filterContinent, setContinent] = useState('');
+
   const [addNameCountry, setAddNameCountry] = useState('');
   const [addCapitalCountry, setAddCapitalCountry] = useState('');
   const [addContinentCountry, setAddContinentCountry] = useState('');
@@ -4411,23 +4413,44 @@ function App() {
   const searchCountries = (value) => {
     setSearchCountry(value);
   };
-  const addCountry = (value) => {
+  const searchContinent = (value) => {
+    setContinent(value);
+  };
+  const onChangeName = (value) => {
     setAddNameCountry(value);
+  };
+  const onChangeCapital = (value) => {
     setAddCapitalCountry(value);
+  };
+  const onChangeContinent = (value) => {
     setAddContinentCountry(value);
   };
 
-  const filteredCountries = countriesInfo.filter((country) => {
-    return country.name.official
-      .toLowerCase()
-      .includes(searchCountry.toLowerCase());
-  });
+  const filteredCountries = countriesInfo
+    .filter((country) => {
+      return country.name.common
+        .toLowerCase()
+        .includes(searchCountry.toLowerCase());
+    })
+    .filter((country) => {
+      return filterContinent ? country.continents[0] === filterContinent : true; // AQUÍ ESTAMOS FORZANDO UN TRUE (porque si es true se pintarán los países, si es false, no se pintarán, entonces básicamente si la condición no se cumple estamos forzando el true para que se pinten todos los países)
+    });
+  {
+    /* Aquí estamos encadenando filtros, básicamente estamos filtrando el array que nos ha devuelto el primer filtro*/
+  }
 
   return (
     <main className='main'>
       <Header />
-      <SearchInput searchCountries={searchCountries} />
-      <AddCountry addCountry={addCountry} />
+      <SearchInput
+        searchCountries={searchCountries}
+        onChangeContinent={searchContinent}
+      />
+      <AddCountry
+        onChangeName={onChangeName}
+        onChangeCapital={onChangeCapital}
+        onChangeContinent={onChangeContinent}
+      />
       <ListCountries countriesData={filteredCountries} />
     </main>
   );

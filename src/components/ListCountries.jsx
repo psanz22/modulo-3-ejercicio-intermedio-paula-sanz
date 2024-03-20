@@ -10,9 +10,9 @@ function ListCountries({ countriesData }) {
       })}
     </div>
   );
-  ListCountries.propTypes = {
-    countriesData: PropTypes.array,
-  };
 }
+ListCountries.propTypes = {
+  countriesData: PropTypes.array,
+};
 
 export default ListCountries;

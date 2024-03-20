@@ -1,16 +1,17 @@
 import '../scss/components/AddCountry.scss';
-function AddCountry({ addCountry }) {
+
+function AddCountry({ onChangeName, onChangeCapital, onChangeContinent }) {
   const handleNameInput = (event) => {
     const nameValue = event.target.value;
-    addCountry(nameValue);
+    onChangeName(nameValue);
   };
   const handleCapitalInput = (event) => {
     const capitalValue = event.target.value;
-    addCountry(capitalValue);
+    onChangeCapital(capitalValue);
   };
   const handleContinentInput = (event) => {
     const continentValue = event.target.value;
-    addCountry(continentValue);
+    onChangeContinent(continentValue);
   };
   return (
     <form>
